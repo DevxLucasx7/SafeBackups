@@ -1,0 +1,38 @@
+{
+    "origem": {
+        "caminho": "C:/Backups",
+        "padrao_arquivos": "*.*",
+        "criar_zip": true,
+        "prefixo_zip": "BKP_SISTEMA",
+        "retencao_dias_local": 7
+    },
+    "storage_local": {
+        "habilitado": true,
+        "ip": "192.168.1.100",
+        "compartilhamento": "Backups",
+        "usuario": "admin",
+        "senha": "sua_senha_aqui",
+        "dominio": "",
+        "retencao_dias": 30
+    },
+    "google_drive": {
+        "habilitado": true,
+        "metodo": "pasta_desktop",
+        "pasta_id_ou_caminho": "G:/Meu Drive/Backups",
+        "arquivo_credenciais_json": "",
+        "retencao_dias": 60
+    },
+    "notificacao_email": {
+        "habilitado": false,
+        "servidor_smtp": "smtp.gmail.com",
+        "porta_smtp": 465,
+        "email_remetente": "seu_email@gmail.com",
+        "senha_app": "xxxx xxxx xxxx xxxx",
+        "email_destinatario": "destinatario@empresa.com.br",
+        "notificar_apenas_em_erro": false
+    },
+    "agendamento": {
+        "hora_execucao": "02:00",
+        "nome_tarefa_windows": "SafeBackup_Task"
+    }
+}
