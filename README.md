@@ -25,25 +25,25 @@ O sistema sincroniza as cópias simultaneamente para um **Storage Local (NAS/SMB
 
 ```mermaid
 flowchart TD
-    subgraph Servidor ou Estação Windows
-        Origem["📁 Pasta de Origem (Qualquer disco)\n(Arquivos, Bancos de Dados, ERPs, etc.)"]
-        Engine["⚙️ SafeBackup Engine\n(Compactação / Verificação / Log)"]
-        UI["🖥️ Painel Gráfico (GUI)\n(Configurações, Testes e Logs)"]
-        TaskSched["⏰ Agendador do Windows (Task Scheduler)\n(Execução autônoma diária --silent)"]
+    subgraph Servidor["Servidor ou Estação Windows"]
+        Origem["📁 Pasta de Origem<br>(Qualquer disco / Arquivos / Bancos de Dados)"]
+        Engine["⚙️ SafeBackup Engine<br>(Compactação, Verificação e Logs)"]
+        UI["🖥️ Painel Gráfico GUI<br>(Configurações, Testes e Monitoramento)"]
+        TaskSched["⏰ Agendador do Windows<br>(Execução autônoma diária --silent)"]
     end
 
-    subgraph Destinos do Backup
-        NAS["🏢 Storage Local / NAS (SMB/CIFS)\n(\\IP\Compartilhamento com User e Senha)"]
-        GDrive["☁️ Google Drive\n(Nuvem corporativa via Drive Desktop / API)"]
-        Email["✉️ Alerta por E-mail (Gmail SMTP)\n(Relatório HTML de status, tempo e tamanho)"]
+    subgraph Destinos["Destinos do Backup"]
+        NAS["🏢 Storage Local / NAS<br>(Compartilhamento de Rede SMB autenticado)"]
+        GDrive["☁️ Google Drive<br>(Drive para Computador / API)"]
+        Email["✉️ Alerta por E-mail<br>(Relatório HTML via Gmail SMTP)"]
     end
 
     UI --> Engine
     TaskSched --> Engine
     Origem --> Engine
-    Engine -->|Autenticação Net Use + Cópia em Blocos| NAS
-    Engine -->|Cópia Segura / Upload Chunks| GDrive
-    Engine -->|Disparo pós-rotina (SSL 465)| Email
+    Engine -->|"Autenticação e Cópia em Blocos"| NAS
+    Engine -->|"Cópia Segura e Upload"| GDrive
+    Engine -->|"Envio de Relatório pós-backup"| Email
 ```
 
 ---
